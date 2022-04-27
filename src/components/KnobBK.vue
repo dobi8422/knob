@@ -10,7 +10,7 @@ const minValue = ref(0)
 const maxValue = ref(100)
 
 // 設定起點位置(角度)
-const initial = ref(0)
+const initial = ref(90)
 
 const nowdeg = ref(0)
 const value = computed(() => {
@@ -35,6 +35,8 @@ const calculateDeg = e => {
 
 onMounted(() => {
   const container = document.querySelector('.container')
+  const knob = document.querySelector('.knob')
+  knob.style.transform = `rotate(${initial.value}deg)`
   container.addEventListener('mousedown', () => {
     const rotate = e => {
       const result = Math.floor(calculateDeg(e) - 90 - initial.value)
